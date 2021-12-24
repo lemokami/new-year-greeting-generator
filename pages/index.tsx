@@ -32,8 +32,11 @@ export default function Home() {
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
-        title: `Christmas wishes ${greeter ? 'from' + greeter : ''}`,
+        title: `Christmas wishes ${greeter === '' ? '' : 'from' + greeter}`,
         url: url,
+        text: `I wish you so much joy during this season and all through to the New Year. ${
+          greeter === '' ? '' : 'With ❤️' + greeter
+        }`,
       });
     } else {
       navigator.clipboard.writeText(url);
