@@ -62,7 +62,7 @@ export default Greeting;
 export async function getServerSideProps({ query }) {
   const name = query.name ? query.name : '';
   const greeter = query.greeter ? query.greeter : '';
-  const fname = `https://res.cloudinary.com/dfsrcgqic/image/upload/v1640373386/chrismas-greeting-gen/0${(
+  const fname = `https://res.cloudinary.com/lemodrive/image/upload/v1640373388/chrismas-greeting-gen/0${(
     Math.random() * 7
   ).toFixed(0)}.png`;
   const quote = quotes[1];
