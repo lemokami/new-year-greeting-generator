@@ -32,8 +32,8 @@ export default function Home() {
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
-        title: 'The Creative Oracle',
-        url: 'https://the-creative-oracle.netlify.app/',
+        title: `Christmas wishes ${greeter ? 'from' + greeter : ''}`,
+        url: url,
       });
     } else {
       navigator.clipboard.writeText(url);
