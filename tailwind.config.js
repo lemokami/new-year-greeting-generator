@@ -6,14 +6,11 @@ module.exports = {
   theme: {
     extend: {
       fontfamily: {
-        poppins: ['Poppins', 'sans-serif'],
-        cursive: ['Oooh Baby', 'cursive'],
+        serif: ['Source Serif Pro', 'serif'],
+        licorice: ['Licorice', 'cursive'],
       },
       colors: {
-        'light-green': '#B0EACD',
-        'dark-green': '#21BF73',
-        white: '#F9FCFB',
-        red: '#FD5E53',
+        blue: '#04294F',
       },
     },
   },
