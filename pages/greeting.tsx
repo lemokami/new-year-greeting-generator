@@ -1,9 +1,10 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import { FC } from 'react';
 
-import pineImg from '../assets/pine.jpeg';
 import { quotes } from '../assets/quotes';
+import Link from 'next/link';
+import { FaPencilAlt } from 'react-icons/fa';
+import Layout from '../components/Layout';
 
 interface GreetingProps {
   name: string;
@@ -14,7 +15,7 @@ interface GreetingProps {
 
 const Greeting: FC<GreetingProps> = ({ quote, name, greeter, fname }) => {
   return (
-    <div className='flex flex-col justify-center items-center h-screen'>
+    <Layout className='flex-1 font-serif bg-white text-blue px-8 xl:px-16 flex flex-col justify-center items-start'>
       {/* seo  */}
       <Head>
         <title>Christmas Wishes from {greeter}</title>
@@ -38,22 +39,28 @@ const Greeting: FC<GreetingProps> = ({ quote, name, greeter, fname }) => {
       </Head>
       {/* end seo  */}
       {/* page content  */}
-      <h1 className='font-[cursive] text-3xl font-bold mb-4 text-red'>
-        Happy Christmas {name.split('')[0].toUpperCase() + name.slice(1)}
-      </h1>
-      <div className='px-4 py-16 rounded-lg relative mx-4 md:mx-auto md:max-w-[50%]'>
-        <Image
-          src={pineImg}
-          layout='fill'
-          objectFit='cover'
-          className='z-0 rounded-lg'
-          alt='Christmas Tree'
-        />
-        <div className='flex flex-col items-center z-1 relative text-white'>
-          <p className='z-1 text-center font-[poppins]'>{quote}</p>
-        </div>
+      <div className='flex flex-col space-y-2 mb-4'>
+        <h1 className='text-4xl xl:text-5xl font-bold'>
+          Wishing you a Merry Christmas
+        </h1>
+        <h1 className='text-4xl xl:text-5xl font-bold'>{name}!</h1>
       </div>
-    </div>
+      <p className='w-full md:w-1/2 text-lg text-[#475358]'>{quote}</p>
+      {greeter !== '' && (
+        <>
+          <p className='font-bold my-4'>with ❤️</p>
+          <p className='font-[licorice] text-6xl'>{greeter}</p>
+        </>
+      )}
+      <Link href='/'>
+        <a>
+          <button className='flex items-center space-x-1 font-normal mt-10 xl:opacity-30 xl:hover:opacity-100 focus:outline-none'>
+            <FaPencilAlt className='w-3' />
+            <span>Create a greeting</span>
+          </button>
+        </a>
+      </Link>
+    </Layout>
   );
 };
 
@@ -62,10 +69,10 @@ export default Greeting;
 export async function getServerSideProps({ query }) {
   const name = query.name ? query.name : '';
   const greeter = query.greeter ? query.greeter : '';
-  const fname = `https://res.cloudinary.com/lemodrive/image/upload/v1640373388/chrismas-greeting-gen/0${(
-    Math.random() * 7
-  ).toFixed(0)}.png`;
-  const quote = quotes[1];
+  const fname = `https://res.cloudinary.com/lemodrive/image/upload/v1640373388/chrismas-greeting-gen/0${
+    (Math.random() * 6).toFixed(0) + 1
+  }.png`;
+  const quote = quotes[(Math.random() * (quotes.length - 1)).toFixed(0)];
 
   return {
     props: {

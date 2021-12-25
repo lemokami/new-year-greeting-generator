@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oooh+Baby&family=Poppins:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Licorice&family=Source+Serif+Pro:wght@400;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,6 +9,6 @@
     @apply text-sm text-gray-500;
   }
   input {
-    @apply px-3 py-2 border text-gray-900 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-light-green focus:ring-offset-1;
+    @apply px-3 py-2 border text-gray-900 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue focus:ring-offset-1;
   }
 }
