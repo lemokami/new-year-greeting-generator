@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { useState } from 'react';
 import { FaChevronLeft, FaShareAlt } from 'react-icons/fa';
 
@@ -90,7 +89,13 @@ export default function Home() {
           <div
             className='flex flex-col md:flex-row rounded-lg mt-8 border-2 p-2'
             onClick={handleShare}>
-            <span className='px-4 p-2'>{url}</span>
+            <a
+              href={url}
+              className='px-4 p-2 underline'
+              target='_blank'
+              rel='noreferrer'>
+              {url}
+            </a>
             <button className='flex items-center justify-center font-normal bg-blue rounded-lg text-white px-8 py-4'>
               {copyContent}
             </button>
