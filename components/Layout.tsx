@@ -9,11 +9,13 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children, className }) => {
   return (
-    <div className='min-h-screen flex'>
+    <div className='h-screen flex flex-col xl:flex-row items-center'>
       {/* page content  */}
-      <div className={`flex-1 ${className ? className : ''}`}>{children}</div>
+      <div className={`flex-1 relative ${className ? className : ''}`}>
+        {children}
+      </div>
       {/* side image  */}
-      <div className='hidden xl:flex flex-1 bg-[#FFFFE5] h-full xl:h-screen items-center justify-center'>
+      <div className='hidden xl:flex flex-1 bg-[#FFFFE5] items-center justify-center h-screen'>
         <Image
           src={sideImg}
           layout='intrinsic'
@@ -21,6 +23,26 @@ const Layout: FC<LayoutProps> = ({ children, className }) => {
           placeholder={'blur'}
         />
       </div>
+      <span className='text-xs opacity-60 text-blue font-light  py-2 block xl:absolute xl:bottom-2 xl:left-4'>
+        Design with <span className='mr-1'>❤️</span> by{' '}
+        <a
+          href='#'
+          className='underline'
+          // target={'_blank'}
+          // rel='noreferrer'
+        >
+          Joel
+        </a>
+        . Developed with
+        <span className='mr-1'>❤️</span> by{' '}
+        <a
+          href='https://lemokami.netlify.app'
+          className='underline'
+          target={'_blank'}
+          rel='noreferrer'>
+          Lemokami
+        </a>
+      </span>
     </div>
   );
 };
