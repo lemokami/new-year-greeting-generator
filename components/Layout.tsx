@@ -14,7 +14,7 @@ const Layout: FC<LayoutProps> = ({ children, className }) => {
       <div className={`flex-1 ${className ? className : ''}`}>{children}</div>
       {/* side image  */}
       <div className='hidden xl:flex flex-1 bg-[#FFFFE5] h-full xl:h-screen items-center justify-center'>
-        <Image src={sideImg} layout='fixed' alt='xmas illustration' />
+        <Image src={sideImg} layout='intrinsic' alt='xmas illustration' />
       </div>
     </div>
   );

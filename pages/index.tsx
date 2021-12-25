@@ -32,10 +32,10 @@ export default function Home() {
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
-        title: `Christmas wishes ${greeter === '' ? '' : 'from' + greeter}`,
+        title: `New Year wishes ${greeter === '' ? '' : 'from' + greeter}`,
         url: url,
         text: `I wish you so much joy during this season and all through to the New Year. ${
-          greeter === '' ? '' : 'With ❤️' + greeter
+          greeter === '' ? '\n' : 'With ❤️' + greeter + '\n'
         }`,
       });
     } else {
@@ -55,7 +55,7 @@ export default function Home() {
 
   return (
     <Layout className='flex flex-col items-start justify-center px-8 xl:px-16 text-blue font-serif'>
-      <h1 className='text-5xl font-bold w-1/2'>Christmas Wish Generator</h1>
+      <h1 className='text-5xl font-bold w-1/2'>New Year Wish Generator</h1>
       {!submitted ? (
         <form onSubmit={handleSubmit}>
           <div className='flex flex-col items-start space-y-2 my-2 mt-4'>
@@ -86,12 +86,12 @@ export default function Home() {
           </button>
         </form>
       ) : (
-        <div className='flex flex-col items-start'>
+        <div className='flex flex-col items-center xl:items-start'>
           <div
             className='flex flex-col md:flex-row rounded-lg mt-8 border-2 p-2'
             onClick={handleShare}>
             <span className='px-4 p-2'>{url}</span>
-            <button className='flex items-center justify-center font-normal bg-blue rounded-lg text-white px-8 py-2'>
+            <button className='flex items-center justify-center font-normal bg-blue rounded-lg text-white px-8 py-4'>
               {copyContent}
             </button>
           </div>
