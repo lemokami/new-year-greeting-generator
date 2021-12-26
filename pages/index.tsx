@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useState } from 'react';
 import { FaChevronLeft, FaShareAlt } from 'react-icons/fa';
 
@@ -54,6 +55,15 @@ export default function Home() {
 
   return (
     <Layout className='flex flex-col items-start justify-center px-8 xl:px-16 text-blue font-serif'>
+      {/* head  */}
+      <Head>
+        <meta property='og:title' content='Greetings Generator' />
+        <meta
+          property='og:description'
+          content='Create greetings, to your loved ones with ease'
+        />
+      </Head>
+      {/* end head  */}
       <h1 className='text-5xl font-bold w-1/2'>New Year Wish Generator</h1>
       {!submitted ? (
         <form onSubmit={handleSubmit}>

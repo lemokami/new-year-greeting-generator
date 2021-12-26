@@ -10,10 +10,9 @@ interface GreetingProps {
   name: string;
   greeter: string;
   quote: string;
-  fname: string;
 }
 
-const Greeting: FC<GreetingProps> = ({ quote, name, greeter, fname }) => {
+const Greeting: FC<GreetingProps> = ({ quote, name, greeter }) => {
   return (
     <Layout className='flex-1 font-serif bg-white text-blue px-8 xl:px-16 flex flex-col justify-center items-start'>
       {/* seo  */}
@@ -26,7 +25,6 @@ const Greeting: FC<GreetingProps> = ({ quote, name, greeter, fname }) => {
           } Christmas is a season of enjoying the simple things that make life beautiful. May you have great memories that will permanently touch your heart. I wish you so much joy during this season and all through to the New Year`}
         />
         <meta property='og:title' content={`New Year Wishes from ${greeter}`} />
-        <meta property='og:image' content={fname} />
         <meta
           property='og:desc'
           content={`${
@@ -66,9 +64,7 @@ export default Greeting;
 export async function getServerSideProps({ query }) {
   const name = query.name ? query.name : '';
   const greeter = query.greeter ? query.greeter : '';
-  const fname = `https://res.cloudinary.com/lemodrive/image/upload/v1640373388/chrismas-greeting-gen/0${
-    (Math.random() * 6).toFixed(0) + 1
-  }.png`;
+
   const quote = quotes[(Math.random() * (quotes.length - 1)).toFixed(0)];
 
   return {
@@ -76,7 +72,6 @@ export async function getServerSideProps({ query }) {
       quote,
       name,
       greeter,
-      fname,
     },
   };
 }
